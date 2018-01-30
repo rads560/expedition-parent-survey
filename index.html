@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Expedition Survey</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+	<script type="text/javascript">
+		function buttonpress() {
+			var responsemap = new Map();
+			//how did your child feel about interacting w the robot
+			var q1 = document.querySelector('input[name="q1"]:checked').value;
+			console.log('q1: ' + q1);
+			responsemap.set("q1", q1);
+       		//to what degree did u have to motivate ur child
+       		var q2 = document.querySelector('input[name="q2"]:checked').value;
+       		console.log('q2: ' + q2);
+       		responsemap.set("q2", q2);
+       		//what did u use to motivate ur child
+       		console.log('motivation: ' + document.getElementById("motivation").value);
+       		responsemap.set("motivation", document.getElementById("motivation").value);
+			//how independently did ur child work w the robot
+       		var q3 = document.querySelector('input[name="q3"]:checked').value;
+       		console.log('q3: ' + q3);
+       		responsemap.set("q3", q3);
+       		//how do u think ur child did on the activities
+       		var q4 = document.querySelector('input[name="q4"]:checked').value;
+       		console.log('q4: ' + q4);
+       		responsemap.set("q4", q4);
+       		//what are ur childs moods (checkboxes)
+       		var myFeels = [];
+       		var feeling = document.querySelectorAll("input[type='checkbox']");
+	        for(var i = 0; i < feeling.length; i++) {
+	            if(feeling[i].checked == true){
+	            	console.log('feeling: ' + feeling[i].value);
+	            	myFeels.push(feeling[i].value);
+	            }   
+	        }
+	        responsemap.set("feeling", myFeels);
+       		//did anything unusual happen today w ur child
+       		var q5 = document.querySelector('input[name="q5"]:checked').value;
+       		console.log('q5: ' + q5);
+       		responsemap.set("q5", q5);
+       		//if yes pls describe what happened briefly
+       		console.log('unusual: ' + document.getElementById("unusual").value);
+       		responsemap.set("unusual", document.getElementById("unusual").value);
+       		//in a few words describe how ur child is developing
+       		console.log('learning_development: ' + document.getElementById("learning_development").value);
+       		responsemap.set("learning_development", document.getElementById("learning_development").value);
+       		//in a few words describe how ur child is interacting w robot
+       		console.log('robot_engagement: ' + document.getElementById("robot_engagement").value);
+       		responsemap.set("robot_engagement", document.getElementById("robot_engagement").value);
+       		JSON.stringify(responsemap);
+		}
+	</script>
+
+	<div class="container-parent" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-parent">
+			<form class="parent-form" method="post" action="" id="parentsurvey">
+				<span class="parent-form-title">
+					Parent Survey
+				</span>
+				<h2>Hello! Each day that you play with the robot with your child, we will ask you to fill in a very brief questionnaire about the experience. The questionnaire will only take about 2-3 minutes to complete. Please select the best answer for each of the following questions.</h2>
+				<span class="parent-form-title"></span>
+
+				<div class="wrap-input100">
+					<span class="label-input100">How did your child feel about interacting with the robot today?</span>
+					<br>
+					<p>
+						<input type="radio" value="lot" name="q1" required checked> 
+						<label class="radbut">
+							He liked it a lot!
+						</label>
+						<br>
+						<input type="radio" value="moderate" name="q1"> 
+						<label class="radbut">
+							He liked it a moderate amount.
+						</label>
+						<br>
+						<input type="radio" value="little" name="q1"> 
+						<label class="radbut">
+							He liked it a little. 
+						</label>
+						<br>
+						<input type="radio" value="notmuch" name="q1"> 
+						<label class="radbut">
+							He didn't like it very much. 
+						</label>
+						<br>
+						<input type="radio" value="no" name="q1"> 
+						<label class="radbut">
+							He didn't like it at all!
+						</label>
+					</p>
+				</div>
+
+				<div class="wrap-input100">
+					<span class="label-input100">To what degree did you have to motivate your child to interact with the robot and games today?</span>
+					<br>
+					<p>
+						<input type="radio" value="notatall" name="q2" required checked> 
+						<label class="radbut">
+							I did not have to motivate him at all. 
+						</label>
+						<br>
+						<input type="radio" value="alil" name="q2"> 
+						<label class="radbut">
+							I had to motivate him a little. 
+						</label>
+						<br>
+						<input type="radio" value="mod" name="q2"> 
+						<label class="radbut">
+							I had to motivate him a moderate amount. 
+						</label>
+						<br>
+						<input type="radio" value="great" name="q2">
+						<label class="radbut">
+							I had to motivate him a great deal.
+						</label>
+						<br>
+						<input type="radio" value="workhard" name="q2"> 
+						<label class="radbut">
+							I had to work really, really hard to motivate him!
+						</label>
+					</p>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">What did you use to motivate your child today?</span>
+					<textarea class="input100" value="motivation" id="motivation" placeholder="Your message here..."></textarea>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">How independently did your child interact with the robot and games today?</span>
+					<br>
+					<p>
+						<input type="radio" value="independent" name="q3" required checked>
+						<label class="radbut">
+							He was completely independent. 
+						</label>
+						<br>
+						<input type="radio" value="lilassist" name="q3">
+						<label class="radbut">
+							He required very little assistance.
+						</label>
+						<br>
+						<input type="radio" value="modassist" name="q3">
+						<label class="radbut">
+							He required a moderate amount of assistance.
+						</label>
+						<br>
+						<input type="radio" value="greatassist" name="q3">
+						<label class="radbut">
+							He required a great deal of assistance.
+						</label>
+						<br>
+						<input type="radio" value="constassist" name="q3">
+						<label class="radbut">
+							He required constant assistance during the interaction.
+						</label>
+					</p>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">How do you think your child performed on the activities today?</span>
+					<br>
+					<p>
+						<input type="radio" value="excellent" name="q4" required checked>
+						<label class="radbut">
+							He performed excellently!
+						</label>
+						<br>
+						<input type="radio" value="vwell" name="q4">
+						<label class="radbut">
+							He performed very well.
+						</label>
+						<br>
+						<input type="radio" value="modwell" name="q4">
+						<label class="radbut">
+							He performed moderately well.
+						</label>
+						<br>
+						<input type="radio" value="notwell" name="q4">
+						<label class="radbut">
+							He didn't perform very well.
+						</label>
+						<br>
+						<input type="radio" value="struggled" name="q4">
+						<label class="radbut">
+							He really struggled today!
+						</label>
+					</p>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Which of the following best descries your child's mood or feelings today? (Please check all that apply)</span>
+					<br>
+					<p>
+						<input type="checkbox" value="excited" name="feeling"> 
+						<label class="radbut">
+							Excited
+						</label>
+						<br>
+						<input type="checkbox" value="happy" name="feeling">
+						<label class="radbut">
+							Happy
+						</label>
+						<br>
+						<input type="checkbox" value="calm" name="feeling">
+						<label class="radbut">
+							Calm
+						</label>
+						<br>
+						<input type="checkbox" value="anxious" name="feeling">
+						<label class="radbut">
+							Anxious
+						</label>
+						<br>
+						<input type="checkbox" value="energetic" name="feeling">
+						<label class="radbut">
+							Energetic
+						</label>
+						<br>
+						<input type="checkbox" value="tired" name="feeling">
+						<label class="radbut">
+							Tired
+						</label>
+						<br>
+						<input type="checkbox" value="lowenergy" name="feeling">
+						<label class="radbut">
+							Low Energy
+						</label>
+						<br>
+						<input type="checkbox" value="distracted" name="feeling">
+						<label class="radbut">
+							Distracted
+						</label>
+						<br>
+						<input type="checkbox" value="frustrated" name="feeling">
+						<label class="radbut">
+							Frustrated
+						</label>
+						<br>
+						<input type="checkbox" value="shy" name="feeling">
+						<label class="radbut">
+							Shy
+						</label>
+						<br>
+						<input type="checkbox" value="sad" name="feeling">
+						<label class="radbut">
+							Sad
+						</label>
+						<br>
+						<input type="checkbox" value="focused" name="feeling">
+						<label class="radbut">
+							Focused
+						</label>
+						<br>
+						<input type="checkbox" value="content" name="feeling">
+						<label class="radbut">
+							Content
+						</label>
+					</p>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">Did anything unusual take place in your child's day today? If yes, please briefly describe what happened.</span>
+					<br>
+					<p>
+						<input type="radio" value="yes" name="q5" required checked> 
+						<label class="radbut">
+							Yes
+						</label>
+						<br>
+						<input type="radio" value="no" name="q5">
+						<label class="radbut">
+							No
+						</label>
+					</p>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<span class="label-input100">If yes, please briefly describe what happened.</span>
+					<textarea class="input100" id="unusual" placeholder="Your message here..."></textarea>
+				</div>
+
+				<div class="wrap-input100">
+					<span class="label-input100">In a few words, please describe how your child is developing, in terms of learning so far.</span>
+					<textarea class="input100" id="learning_development" placeholder="Your message here..."></textarea>
+				</div>
+
+				<div class="wrap-input100">
+					<span class="label-input100">In a few words, please describe how your child is interacting and engaging with the robot so far.</span>
+					<textarea class="input100" id="robot_engagement" placeholder="Your message here..."></textarea>
+				</div>
+
+				<h3>Thank you for helping us with this important work!</h3>
+				<span class="parent-form-title"></span>
+
+				<div class="container-parent-form-btn">
+					<div class="wrap-parent-form-btn">
+						<div class="parent-form-bgbtn"></div>
+						<button style="background-color:black" id="submit" onclick="buttonpress()" class="parent-form-btn">
+							<a href="index.html" style="color: white; background: black">
+								Submit
+							</a>
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<p id="outputs"></p>
+		</div>
+
+		<span class="parent-more">
+				USC Interaction Lab
+		</span>
+	</div>
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>
